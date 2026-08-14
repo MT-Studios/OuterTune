@@ -102,14 +102,21 @@ public final class OtOffloadSupportProvider implements DefaultAudioSink.AudioOff
             return AudioOffloadSupport.DEFAULT_UNSUPPORTED;
         }
 
+        // Convert Media3 AudioAttributes to platform AudioAttributes
+        android.media.AudioAttributes platformAudioAttributes = new android.media.AudioAttributes.Builder()
+                .setUsage(audioAttributes.usage)
+                .setContentType(audioAttributes.contentType)
+                .setFlags(audioAttributes.flags)
+                .build();
+
         if (SDK_INT >= 31) {
             return OtOffloadSupportProvider.Api31.getOffloadedPlaybackSupport(
                     audioFormat,
-                    audioAttributes.getPlatformAudioAttributes(),
+                    platformAudioAttributes,
                     isOffloadVariableRateSupported);
         }
         return OtOffloadSupportProvider.Api29.getOffloadedPlaybackSupport(
-                audioFormat, audioAttributes.getPlatformAudioAttributes(), isOffloadVariableRateSupported);
+                audioFormat, platformAudioAttributes, isOffloadVariableRateSupported);
     }
 
     private boolean isOffloadVariableRateSupported(@Nullable Context context) {

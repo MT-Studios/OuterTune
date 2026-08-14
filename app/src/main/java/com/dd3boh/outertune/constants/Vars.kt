@@ -7,7 +7,7 @@ import com.dd3boh.outertune.BuildConfig
  * Feature flags
  */
 
-const val ENABLE_FFMETADATAEX = BuildConfig.FLAVOR == "full"
+const val ENABLE_FFMETADATAEX = false // Temporarily disabled - BuildConfig.FLAVOR == "full"
 
 
 /**

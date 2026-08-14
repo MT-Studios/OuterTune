@@ -9,14 +9,14 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "OuterTune"
+rootProject.name = "MiddleTune"
 include(":app")
 include(":innertube")
 include(":kugou")
 include(":lrclib")
 include(":material-color-utilities")
-include(":ffMetadataEx")
-include(":taglib")
+//include(":ffMetadataEx")  // Temporarily disabled - needs FFmpeg libraries
+//include(":taglib")        // Temporarily disabled - depends on ffMetadataEx
 
 // Use a local copy of NewPipe Extractor by uncommenting the lines below.
 // We assume, that OuterTune and NewPipe Extractor have the same parent directory.
@@ -36,13 +36,13 @@ include(":taglib")
 //}
 
 
-includeBuild(file("media").toPath().toRealPath().toAbsolutePath().toString()) {
-    dependencySubstitution {
-        substitute(module("androidx.media3:media3-common")).using(project(":lib-common"))
-        substitute(module("androidx.media3:media3-common-ktx")).using(project(":lib-common-ktx"))
-        substitute(module("androidx.media3:media3-datasource-okhttp")).using(project(":lib-datasource-okhttp"))
-        substitute(module("androidx.media3:media3-exoplayer")).using(project(":lib-exoplayer"))
-        substitute(module("androidx.media3:media3-exoplayer-workmanager")).using(project(":lib-exoplayer-workmanager"))
-        substitute(module("androidx.media3:media3-session")).using(project(":lib-session"))
-    }
-}
+//includeBuild(file("media").toPath().toRealPath().toAbsolutePath().toString()) {
+//    dependencySubstitution {
+//        substitute(module("androidx.media3:media3-common")).using(project(":lib-common"))
+//        substitute(module("androidx.media3:media3-common-ktx")).using(project(":lib-common-ktx"))
+//        substitute(module("androidx.media3:media3-datasource-okhttp")).using(project(":lib-datasource-okhttp"))
+//        substitute(module("androidx.media3:media3-exoplayer")).using(project(":lib-exoplayer"))
+//        substitute(module("androidx.media3:media3-exoplayer-workmanager")).using(project(":lib-exoplayer-workmanager"))
+//        substitute(module("androidx.media3:media3-session")).using(project(":lib-session"))
+//    }
+//}

@@ -73,6 +73,7 @@ android {
 //            isDebuggable = true
             isProfileable = true
             matchingFallbacks += listOf("release")
+            signingConfig = signingConfigs.getByName("debug")  // Use debug signing for userdebug
         }
     }
 
@@ -163,7 +164,7 @@ android {
             allowedLicenses.addAll("Apache-2.0", "BSD-3-Clause", "GNU LESSER GENERAL PUBLIC LICENSE, Version 2.1", "GPL-3.0-only", "EPL-2.0", "MIT", "MPL-2.0", "Public Domain")
 
             // Full license text for license IDs mentioned here will be included, even if no detected dependency uses them.
-             additionalLicenses.addAll("apache_2_0", "gpl_2_1") // taglib, ffMpeg in ffMetadataEx
+             additionalLicenses.addAll("apache_2_0", "gpl_2_1") // Licenses for future modules
         }
 
         library {
@@ -256,7 +257,7 @@ dependencies {
     implementation(project(":kugou"))
     implementation(project(":lrclib"))
     implementation(project(":material-color-utilities"))
-    implementation(project(":taglib"))
+    //implementation(project(":taglib"))  // Temporarily disabled
 
     // misc
     implementation(libs.aboutlibraries.compose.m3)
@@ -268,6 +269,6 @@ dependencies {
 
 afterEvaluate {
     dependencies {
-        add("fullImplementation", project(":ffMetadataEx"))
+        //add("fullImplementation", project(":ffMetadataEx"))  // Temporarily disabled
     }
 }
