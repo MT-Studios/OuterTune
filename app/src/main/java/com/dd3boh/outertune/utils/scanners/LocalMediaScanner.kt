@@ -74,9 +74,9 @@ import java.time.ZoneOffset
 class LocalMediaScanner(val context: Context, scannerImpl: ScannerImpl) {
     private val TAG = LocalMediaScanner::class.simpleName.toString()
     private var advancedScannerImpl: MetadataScanner = when (scannerImpl) {
-        ScannerImpl.TAGLIB -> TagLibScanner()
-        ScannerImpl.FFMPEG_EXT -> if (ENABLE_FFMETADATAEX) FFmpegScanner() else TagLibScanner()
-        ScannerImpl.MEDIASTORE -> MediaStoreExtractor() // unused
+        ScannerImpl.TAGLIB -> TagLibScanner as MetadataScanner
+        ScannerImpl.FFMPEG_EXT -> if (ENABLE_FFMETADATAEX) FFmpegScanner as MetadataScanner else TagLibScanner as MetadataScanner
+        ScannerImpl.MEDIASTORE -> MediaStoreExtractor as MetadataScanner // unused
     }
 
     init {

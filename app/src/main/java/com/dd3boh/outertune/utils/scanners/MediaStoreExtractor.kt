@@ -3,7 +3,7 @@ package com.dd3boh.outertune.utils.scanners
 import com.dd3boh.outertune.models.SongTempData
 import java.io.File
 
-class MediaStoreExtractor : MetadataScanner {
+object MediaStoreExtractor : MetadataScanner {
     /**
      * Given a path to a file, extract necessary metadata.
      *
